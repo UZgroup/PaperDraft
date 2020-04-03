@@ -1,0 +1,289 @@
+ % ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.1 distribution.
+%   Version 4.1r of REVTeX, August 2010
+%
+%   Copyright (c) 2009, 2010 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.1
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[%
+ reprint,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%showpacs,preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,
+%pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{revtex4-1}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+%\usepackage{subcaption}
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+\usepackage{lmodern}
+\usepackage{sans}
+%\usepackage{classico}
+%\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+\usepackage{sidecap}
+\usepackage{subcaption}
+\usepackage{multirow}
+\renewcommand{\baselinestretch}{1.25}
+
+
+
+\begin{document}
+
+\title{Sodium Controls Intracellular Effector Binding Site Via Water Polarisation In Class A GPCRs}% Force line breaks with \\
+
+%\thanks{A footnote to the article title}%
+\author{Neil Thomson, Owen Vickery, Callum Ives, Ulrich Zachariae}
+\affiliation{Computational Biology, School of Life Sciences, University of Dundee.}
+%\altaffiliation[Also at ]{}%Lines break automatically or can be forced with \\
+
+\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+
+\begin{abstract}
+
+\end{abstract}
+
+\maketitle
+
+\textbf{{\large Introduction}}\\
+
+G-Protein coupled receptors (GPCRs) form the largest superfamily of cell surface receptors with over 800 members controlling a variety of physiological processes. Spanning the plasma membrane of a cell from the extracellular (EC) to the intracellular (IC) face, these membrane proteins act as signal transducers in order to communicate, and elicit a response, to the outside environment of the cell. Ligand binding on the EC domain induces conformational changes which expose an effector protein binding site on the cytoplasmic face, initiating signalling by binding unique downstream effector proteins. Various effector proteins act as signal transducers, namely: hetero-trimeric G-proteins, $\beta$-arrestins, and GPCR kinases (GRKs), each of which cause different physiological changes to the cell \cite{Katritch2012}. As such, GPCRs form the main target for drug therapies, with over 30\% of US food and drug administration (FDA) approved drugs targeting roughly 108 different GPCRs \cite{Hauser2018}.
+
+Class A receptors comprise the majority of GPCRs, with over 700 members. In high-resolution inactive crystal structures, but not active, sodium has been observed bound to a highly conserved residue central to the transmembrane (TM) domain (residue D2.50 - Ballesteros-Weinstein numbering system \cite{Isberg2015}), implicating sodium in the activation of GPCRs \cite{Zarzycka2019}. Furthermore, it has been recognised that the presence of a conserved internal network of water molecules connecting and interacting with polar residues, including D2.50, likely plays an important role in GPCR signal transduction. For instance, upon activation, a significant repositioning of the TM water-network seems to be coupled to the collapse of the sodium binding pocket \cite{Venkatakrishnan2018, Venkatakrishnan2019, Yuan2014}.
+
+Through molecular dynamics simulations on crystal structures of A$_{2A}$AR, $\beta_2$AR, M2R and $\mu$OR, Venkatakrishnan et, al. revealed the presence of three well-defined water pockets that appear in both active and inactive crystal structures, in addition to the re-arrangement of specific water mediated contacts between highly conserved residues \cite{Venkatakrishnan2019}. Moreover, a number of various studies have correlated GPCR activation with distinct conformational changes to the rotamer states of highly conserved residues termed \textit{microswitches}, thought to underpin the large scale conformational changes that propagate from the ligand to the effector protein binding site upon activation \cite{Katritch2012, Gurevich2017, Pardo2007, Lee2014, Lee2015, Trzaskowski2012, Vickery2018, Tomobe2017, Yuan2014}. The most important microswitches include: D2.50, the highly conserved sodium coordinating residue; N7.49 (NPxxY motif), which is known to form a direct hydrogen bond with D2.50 in the $\beta_2$AR upon activation \cite{Hulme2013}; and the DRY motif, known to play a role in the D3.49-R3.50 ionic lock to maintain the inactive receptor state, as well as g-protein binding to stabilise the active state \cite{Trzaskowski2012}. These observations highlight an interplay between the sodium site, water mediated interactions, and conserved residues, which are critical for g-protein signalling. However, until now the functional interplay of the essential components: sodium, internal water, and the microswitches, has remained unknown \cite{Zarzycka2019, Venkatakrishnan2019}.
+
+To resolve the functional role of sodium and water in the context of GPCR activation, we developed a novel approach based on Shannon's mutual information \cite{Shannon1948} and McGill's interaction information \cite{McGill1954}. GPCR signal transduction is a process whereby information is sent, encoded, transmitted and received; in parallel with the tenets of information theory. Therefore, sodium, internal water, and microswitches, can be seen to act as essential components of an information system. 
+
+We conduct all-atom molecular dynamics simulations starting from three inactive-state Class A GPCRs: the A$ _{2A} $-adenosine receptor (A$ _{2A} $AR), $\mu$-opioid receptor ($\mu$OR), and $\delta$-opioid receptor ($\delta$OR). For each receptor, three 1.7 $\mu$s timescale simulations were performed: D2.50 with sodium bound, D2.50 charged, and D2.50 protonated; representing ternary states of D2.50 in the hypothesised activation process. The protonated state of D2.50 was included because of observations from Ranganathan et, al., Miao et, al., and Vickery et, al., which suggest that the absence of sodium makes D2.50-protonation increasingly likely \cite{Ranganathan2014,Miao2015,Vickery2018}. Our own application of mutual information for GPCR signalling is able to reveal the internal circuity of these mechanistic processes. With this we show that the sodium binding site has a long range effect which modulates the rotamer state of the DRY motif and intracellular loop 2 (ICL2) near the effector protein binding site, priming it for g-protein binding. 
+
+
+****
+NEW RESULT CONCLUSION WILL GO HERE
+
+The polarisation of two conserved water sites is key to the formation of this long range water-mediated information pathway, with the rotamer states of N7.45 and N7.49 aiding in the stabilisation of specific polarisations.
+****
+
+
+%*** MAYBE ***
+These results are the first step in elucidating the mechanistic interplay of sodium, water, and microswitches. It is likely that the GPCR agonists trigger a similar information pathway within GPCRs. 
+%Understanding this internal GPCR circuitry is critical for identifying the behaviour of agonists, as well as their potentially unique information pathways, aiding in the development of novel biased ligands. 
+%******
+
+***IM UP TO HERE (3rd april 2020)***
+\textbf{{\large Results}}\\
+
+It is believed that sodium may play a role in reducing the thermal fluctuation level of the protein and thus stabilising inactive conformations of microswitches \cite{White2018, Pardo2007, Shalaeva2019, Miao2015},  but the mechanisms by which this is achieved in unknown. Using information theory we first tracked the information propagated through the receptor upon removing sodium from the inactive state (see methods). 
+
+Interaction information is used to measure the \textit{gain in mutual information} between residue pairs due to the  absence, or presence and dipole moment orientation of five waters: three identified by Venkatakrishnan et, al. to be conserved in both active and inactive crystal structures - water A between D2.50 and N1.50 (pocket A), water B between N7.49 and N7.45 (pocket B), and water C between C6.47 and x7.37 (pocket C) \cite{Venkatakrishnan2019, Ghassami2017}; and waters beside W4.50 and D3.49 respectively, where we observed large probability densities for single water molecule occupancy in the simulations of our three receptors. 
+
+% We hypothesise that subsequetial D2.50 protonation is a key step in the GPCR activation process that shifts the conformational equilibrium of the receptor to an active population, and that propagation of this information occurs through changes to the conserved water cluster, coupled with conformational changes to microswitches, underpinning the large scale movement of the TM helices upon activation \cite{Lee2014, Lee2015, Venkatakrishnan2018, Venkatakrishnan2019}. 
+
+%To breakdown which residues and waters in the activation process were triggered by the removal of sodium, and which were triggered by the subsequent protonation, we investigated mutual information between the charged state of D2.50 and these two terminal states. 
+
+
+ **EVERYTHING BELOW HERE WILL CHANGE WITH THE NEW RESULTS**\\
+ 
+ 
+\textbf{\textit{Removal of Na leads to N7.45 - DRY communication channel}.} 
+
+In the inactive receptor state, sodium binds between N7.45 and D2.50, causing N7.45 to orient its side-chain oxygen towards the sodium, creating a local dipole. In all three receptor types, we observe that the removal of sodium results in a change to this dipole, with N7.45 re-orienting its side chain to now form a hydrogen bond between its amino group (NH$_2$) and the oxygen of D2.50. In the sodium-bound case, water B acts as a hydrogen bond acceptor with the side-chain amino group of N7.45. When sodium is removed, water B then becomes a hydrogen bond donor with the re-oriented side chain oxygen of N7.45. Therefore, removing sodium results in a direct change to the dipole orientation of water B, via a change to the local hydrogen bonding pattern between D2.50 and N7.45. Interestingly, a long range conformational coupling is seen between N7.45 and the DRY motif, as well as D2.50 and the DRY motif. The coupling between D2.50 and the DRY motif depends on the charge of the sodium site, and is not affected by any of the three water pockets. 
+
+We used our information theoretic methodology to identify mutual information pathways in the receptors, and quantify the aount of information exchanged. Mutual information was calculated between all residue pairs by concatenating the simulations with sodium bound (D2.50 neutral) and without sodium bound (D2.50 charged), representing the binary effect of removing sodium from the receptor (1 bit of information). Interaction information was calculated for every pair of residues to determine how much of the mutual information between residue pairs was dependent on the presence and dipole orientation of water in pockets A, B, and C. 
+
+The largest response to the input information at the sodium site is in the rotamer state of N7.45, receiving 0.55 bits of information, which is 55\% of the input information (sodium bound vs sodium not bound - 1 bit). Water B has an effect on the information received at N7.45. A change to the dipole orientation of water B accounts for 22\%, or 0.12 bits, of the mutual information between N7.45 and the sodium site, suggesting that the change in water polarisation of pocket B significantly helps to stabilise the change in rotamer state of N7.45. 
+
+Not surprisingly, mutual informaton is shared between many residues (N7.45, L2.46 and D2.50) that line the sodium binding site, likely due to a shared response in changes to the local environment. Unexpectedly, communication is seen between N7.45 and the DRY motif (D3.49 - 0.05 bits, and R3.50 - 0.12 bits), as well as D2.50 and the DRY motif (D3.49 - 0.09 bits, R3.50 - 0.11 bits). The long range communication at the DRY motif is not affected by any of the three waters. 
+
+
+\textbf{\textit{Protonation of D2.50 leads to N7.49 - DRY communication channel}.} 
+
+\textbf{Observed mechanism.} Absence of sodium near D2.50 has been shown to increase the probability of D2.50 protonation. Protonation has therefore been hypothesised to respresent the additional step in the activation process. N7.49 bonds its amino group to the side chain oxygen of D2.50 in both the sodium bound state and D2.50-charged state. In the D2.50-charged state, the side chain oxygen of D2.50 also acts as an hydrogen bond acceptor for water A, mediating a bond with N1.50. We observe big effects throughout the receptors upon D2.50 protonation near the sodium binding site. Protonation of D2.50 flips the hydrogen bonding pattern between D2.50 and N7.49, and D2.50 and water A, from D2.50-acceptor (O$^-$) to D2.50-donor (OH). This results in a change to the rotamer state of N7.49, repelling the positively charged amino group. Simultaneously, water A changes dipole orientation, accepting a hydrogen bond from the protonated oxygen on D2.50. N7.49 re-orients such that its side chain oxygen faces inwards to water pocket A, hydrogen bonding with water A, stabilising the orientation of N7.49 and water A. The amino group of N7.49 points inwards to water pocket B, which forms a water mediated bond with the inward facing side-chain oxygen of N7.45, stabilising the orientation of all four components: N7.45, N7.49, water A, and water B. Interestingly, a long range conformational coupling is observed between N7.49 and the DRY motif, which in this case is significantly affected by water pocket A. 
+
+\textbf{Information pathways.} Mutual information and interaction information was calculated between simulations including the D2.50-charged and D2.50-protonated state. These results can be interpreted as the subsequential step of D2.50 protonation, following removal of sodium from the binding pocket. N7.49 is the key receiver of the input information, receiving 0.69 bits (69\%) of the input information. Water A accounts for 65\% of this information (0.45 bits), suggesting that the dipole orientation helps to stabilise the rotamer state of N7.49, amplifying the mutual information between the sodium site and N7.49. Water B increases the mutual information between the sodium site and N7.49 by 0.12 bits, suggesting that pocket B acts primarily to stabilise the rotated conformation of N7.45 and N7.49 via mediating a hydrogen bond between their respective amino group and side-chain oxygen. 
+
+Again, a long range response is observed in the rotamer state of R3.50 at the D/ERY motif, receiving 0.26 bits of information. N7.49 shares 0.23 bits of mutual information with R3.50, roughly equivalent to the amount received from the binary change at the protonation site. Water pocket A contributes 65\% between R3.50 and the protonation site (0.17 bits), and 65\% of the mutual information between R3.50 and N7.49 (0.15 bits).  
+
+\textbf{\textit{Activation: Sodium-bound-D2.50 and protonated-D2.50 are linked to unique conformational states of the DRY motif}.} 
+
+\textbf{Observed mechanism.} Both N7.45 and N7.49 rotate in the transition between the D2.50-sodium-bound and D2.50-protonated state. We know that N7.45 responds to the removal of sodium by re-orienting its side-chain oxygen inwards towards water pocket B, whereas N7.49 responds to the protonation of D2.50 by re-orienting its side-chain amino group inwards towards water pocket B. Overall, these changes stabilise each other via a water mediated polarisation effect in water pocket B. Water A also re-orients itself to become a hydrogen bond donor with the now inward facing (w.r.t pocket A) side-chain oxygen of N7.49. This aids in stabilising the rotamer state of N7.49, and in turn stabilising N7.45 and the polarisation of pocket B. Sodium removal and subsequent protonation has direct impacts on the hydrogen bonding patterns of D2.50, which results in a change to the rotamer of N7.45 and N7.49, stabilised by re-orienting the dipole of water in pockets A and B. There is a long range conformational coupling observed between N7.49 and the DRY motif which is significantly affected by the dipole orientation of water A. 
+
+\textbf{Information pathways.} The mutual information and interaction information was calculated between simulations including D2.50-sodium-bound and D2.50-protonated. The most important residues for the transmission of the sodium site information are highlighted here - N7.45 and N7.49. N7.49 receives 0.76 bits (76\%) of the information input to the sodium site via the binary interchanging of sodium with hydrogen, highlighting the importance of N7.49 residue as a key receiver and transmitter. Water pocket A contributes 0.64 bits of this communication between N7.49 and the sodium site, or in other words, 84\% of the mutual information shared between N7.49 and the sodium site is due to water pocket A stabilising the distinct rotamer states of N7.49.
+
+N7.45 receives 0.76 bits (76\%) of the input information from N7.49, but only receives 0.2 bits directly from the sodium site, suggesting that N7.45 is more conformationally coupled to N7.49 than the sodium site in this case. The dipole reorientation of water A increases the mutual information by 0.5 bits between N7.45 and N7.49 - this is 66\% of the information shared, suggesting that the water induced stabilisation of N7.49 further stabilises the rotamer state of N7.45. Water B only affects information between N7.49 and the sodium site, and N7.49 and N7.45, highlighting that N7.49 is the key rotamer in the transmission of information. Water B causes a gain of 0.15 bits of information (20\%) between N7.49 and the sodium site, and 0.18 bits between N7.45 and the sodium site (24\%), highlighting that this water aids in the stabilising the re-oriented rotamer states of N7.49 and N7.45. 
+
+A significant amount of mutual information is shared long range between N7.49 and the DRY motif (D3.49 - 0.12 bits). This communication is largely due to the polarisation of water pocket A (51\%). This suggests the downward flipped rotamer state of N7.49, stabilised by the dipole orientation of waters A and B, is necessary for the communication with the DRY motif. Interestingly, no information is shared between N7.45 and the DRY motif in this case, suggesting that N7.45 shares information with the DRY motif about whether the sodium site is charged or not, whereas N7.49 share information with the DRY about whether D2.50 is protonated or not. 
+
+
+\textbf{{\large Discussion}}\\
+We identified a water-mediated pathway of information transfer in class A GPCRs using our novel application of Shannon's information theory in conjunction with interaction information. Removal of sodium and subsequent protonation of D2.50 were hypothesised to represent key stages in the activation process. Our novel application of information theory tracked a long range information pathway between the sodium site at which we made these subsequent changes, and the DRY motif - known to play a critical role in both holding the effector binding site closed and binding to the cognate g-protein. Two of the three conserved water sites play critical roles in the transmission of this information. In all instances, the water conserved in water pocket C was insignificant for any mutual information pathways.
+
+Removal of sodium removes the intermediate positive charge between N7.45 and D2.50. This causes N7.45 to re-orient and form a hydrogen bond with the side-chain oxygen to D2.50. Water pocket B plays a role in stabilisation of N7.45 and N7.49 by re-polarising. Information is transmitted long range between N7.45 and the DRY motif upon removal of sodium.
+
+Protonation of D2.50 causes a polarisation change in water in pocket A, turning water from a hydrogen bond donor with D2.50 to an acceptor. Similarly, protonation of D2.50 turns N7.49 from a hydrogen bond donor to an acceptor with D2.50, in turn re-orienting the side chain. N7.49 points its side chain oxygen inwards to water pocket A, acting as a hydrogen bond acceptor with the newly re-polarised water. This stabilises the protonted state of both N7.49 and water pocket A. Information is transmitted long range between N7.49 and R3.50. This information is mainly due to water pocket A, which stabilises the mutual states of each residue. 
+
+These results highlight that the state of the sodium binding site has a direct impact on water polarisation in the highly conserved water sites, which triggers specific rotamer states of N7.45 and N7.49 (NPxxY), stabilised by water pockets A and B, and facilitating long range communication with the DRY motif (D3.49 and R3.50) at the g-protein binding site. Therefore, D2.50 appears to act as a dual polarisation switch for the hydrogen bonding network. Firstly for N7.45, upon removal of sodium, and secondly for N7.49, upon protonation of D2.50.  
+
+ 
+\textbf{\textit{Future Directions.}} Mutual information is non-directional, therefore no causality can be ascertained from any mutual information pathways. To obtain which direction information travels in, e.g. from N7.49 to R3.50, one can make use of transfer entropy \cite{Schreiber2000} by applying a time lag to our method, thereby measuring whether information is shared between the past state of one residue and the future state of another. 
+\newpage
+
+\textbf{{\large Methods}}
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=1\linewidth]{n150phiexample}
+%	\caption{A change of roughly 90 degrees in the $\phi$ angle of the water dipole moment occurs upon protonation of D2.50 for the water in the N1.50/D2.50 pocket.}
+%	\label{fig:n150phiexample}
+%\end{figure}
+
+%
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=1\linewidth]{motifsnaturepaper}
+%\caption{Illustration of conserved motifs and transition between inactive and active states taken from (Thal, 2018) \cite{Thal2018}.}
+%\label{fig:channel_anotate}
+%\end{figure}
+%
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=1\linewidth]{dominoexamplelabel}
+%	\caption{Illustration of N7.49 and R3.50 swinging up in concert during transition between inactive and active crystal structures. Inactive crystal structure (pdb: 4dkl) contains sodium, and active crystal structure (pdb: 5c1m) does not contain sodium.}
+%	\label{fig:dominoexample}
+%\end{figure}
+
+\textbf{Information theory.}
+
+Similar to tICA, the current consensus in the field is that slow modes of the GPCR microswitches are meaningful, representing large scale changes between conformational states of the GPCR, rather than high frequency oscillations of the same conformation state \cite{Latorraca2017}. Therefore, in order to obtain mutual information between low frequency changes to microswitch rotamers, our methodology differs from traditional co-variance mutual information. Residues are required to have at least two conformational states to store any information, similar to dominos - e.g. 'up' and 'down'. By looking at the state of one residue, we can infer about the state of another, revealing an information pathway. Applying mutual information to conformational states eliminates noise from co-varying residues that always occupy the same conformation, while highlighting residues that are conformationally linked.
+
+The analysis was divided into three pairwise combinations of the ternary states of D2.50, isolating the functional effect of removing sodium from that of protonating D2.50. The pairwise combinations of simulations were concatenated to create one large trajectory representing the change in state of D2.50: swapping of sodium with a proton - disregarding the intermediate receptor state and representing the full activation picture (sodium bound D2.50 + protonated D2.50), removal of sodium (sodium bound D2.50 + charged D2.50), and protonation of D2.50 (charged D2.50 + protonated D2.50). The 'input information'  depends on the pairwise combination of simulations used, and represents the binary change made to the state of the sodium site (i.e. 1 bit of information). All values of mutual and interaction information are therefore normalised to 1 bit.
+
+Residues whose functions are dependent on the state of D2.50 respond with distinct changes in their rotamer states. Residues may have a coupling in their response to the ternary state of D2.50, highlighting the mutual information shared between two residues. Additionally, by looking at the water dynamics of three sites conserved across both inactive and active state crystal structures we measured the influence of water on these communication pathways. As a way of highlighting the information pathways common to all three receptors, we took the geometric mean of mutual information and interaction information values across each receptor. We investigate a consensus set of conserved residues, including the well known motifs: CWxP, NPxxY, D[E]RY, and P-I-F; and additionally: L2.46, D2.50, I3.40, L3.43, W4.50, E6.30 [L6.30 in opioid receptors], N7.45, and F8.50.
+Residue rotamer conformations are defined by in-house Gaussian style clustering to $\chi$1 and $\chi$2 dihedral angles, as seen in figure \ref{fig:W648stateschi2_anotate}. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{W648stateschi2_anotate}
+	\caption{Illustration of in-house Gaussian clustering method for discretisation of residue rotamer states on $\chi$2 angle of highly conserved tryptophan W6.48.}
+	\label{fig:W648stateschi2_anotate}
+\end{figure}
+
+Water polarisation is measured by taking the dot product of the dipole moment ($\mu$) with each box axis in the simulation ($\mu \cdot$x, $\mu \cdot$y, $\mu \cdot$z), then converting this into spherical coordinates to give $\phi$ and $\psi$ angles, followed by the same Gaussian style clustering algorithm. When water is not found in a specific water pocket, that pocket is assigned an angle outside of the 360 degree periodicity to represent a different state. In this sense, looking at the occupancy and polarisation of a water pocket may tell us about the states of certain microswitches. This allows us to deduce the functional effect of each water pocket on the communication between microswitch pairs.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{waterpocketlabelled}
+	\caption{Water pockets conserved in active and inactive crystal structures of $\mu$OR, A$_{2A}$AR and $\delta$OR. Pockets are defined as a sphere of radius 3.5$\AA$ centred on the centre of geometry of each triangle/tetrahedron. Blue spheres represent water molecules.}
+	\label{fig:waterpockets}
+\end{figure}
+
+The magnitude of input information is determined from equation \ref{eq:entropy}, where $ p(i) $ is the probability of state $ i $ occuring, and $H$ is the entropy which is a measure of information. 
+
+\begin{equation}
+\label{eq:entropy}
+H = - \sum_i p(i) log_2 p(i)
+\end{equation}
+
+Mutual information ($I$) between two residues $X$ and $Y$ is calculated using equation \ref{eq:mutual_info}, where $ H(X|Y) $ is the conditional entropy \cite{Shannon1948}. This equation tells us how much the rotameric state of residue $X$ ($H(X)$) depends on the rotameric state of residue $Y$.
+
+\begin{equation}
+\label{eq:mutual_info}
+I(X,Y) = H(X)+H(Y)-H(X,Y)
+\end{equation}
+
+The interation information is calculated using equation \ref{eq:inter_inf}, where $ I(X,Y|H_2O) $ tells us what magnitude of mutual information shared between $X$ and $Y$ is dependent on the state of a specific water ($H_2O$) \cite{McGill1954}.
+
+\begin{equation}
+\begin{split}
+\label{eq:inter_inf}
+I(X,Y,H_2O) = I(X,Y) - I(X,Y|H_2O) \\
+= H(X)+H(Y)+H(H_2O)\\
+-H(X,Y)-H(X,H_20)-H(Y,H_20)\\
++H(X,Y,H_20)
+\end{split}
+\end{equation}
+
+\textbf{Loop filling and refinements.}
+All crystal structures ($\mu$OR - pdb:4dkl, $\delta$OR - pdb:4n6h, A$_{2A}$AR - pdb:5olz) were obtained from GPCRdb \cite{Isberg2016}, selecting the refined version with mutations reversed to the canonical sequence and cleaved loops refilled with homology modelling. 
+
+\textbf{Protein structure preparations.}
+All transmembrane crystalline waters and ligands were kept in the structure, removing all external waters and non-protein molecules. All proteins were truncated and capped with acetyl and methyl groups at corresponding N and C terminals using PYMOL \cite{DeLano2002}. As the $\mu$OR crystal structure did not resolve a sodium ion in the pocket, the sodium bound structure was obtained by aligning the $delta$OR crystal structure and placing the sodium ion in an identical position. D2.50-charged protein structures were prepared by removing sodium from the crystal structure. The third, protonated-D2.50 protein state was prepared in molecular dynamics software GROMACS \cite{Abraham2015}.
+
+\textbf{Ligand structure preparations.}
+Ligand structures were taken from their respective protein pdb files, and parameterised for molecular dynamics simulations in GROMACS using ACPYPE \cite{SousaDaSilva2012}.
+
+\textbf{MD simulations.}
+We modelled the protein, membrane, and ligand, using the amber99sb-ildn forcefield \cite{Lindorff-Larsen2010} in GROMACS with virtual sites to allow a time-step of 4 femtoseconds. The proteins were embedded in the pre-equilibrated SLipid POPC membrane \cite{Jambeck2012} using InflateGRO \cite{Kandt2007}. The protein-membrane complexes were solvated with a solution of TIP3P water molecules containing 150 mmol concentration of NaCl, creating a box size of roughly 128x134x125$\AA^3$. The systems were equilibrated in both the NVT and NPT ensemble at 310K for 3ns, with a further 70ns of production run simulation considered as additional NPT equilibration. Simulations were performed for 1.7 $\mu$s each at constant temperature of 310K and pressure of 1 bar, with the protein-ligand complex, membrane, and solution independently coupled to a temperature bath using the Nose-Hoover thermostat method with a time constant of 0.5 ps and a semi-isotropic Parrinello-Rahman barostat with a time constant of 5 ps \cite{Bussi2009}.
+
+\textbf{Obtaining rotamer angles and water polarisation.}
+Rotamer angles were obtained every 120 ps using gmx\_chi. The frame rate was chosen to be just faster than the autocorrelation time for the conserved water with the fastest relaxtion time \cite{Lee2016}. For $\mu$OR, water pockets were defined using MDAnalysis \cite{Michaud-Agrawal2011} as spheres of radius 4 $\AA$ centred on the geometric centres of: the tetrahedron formed by joining C-$\alpha$'s of N1.50-D2.50-N7.49-L2.46, the triangle formed by joining C-$\alpha$'s of N7.45-N7.49-A6.38, the triangle formed by joining C-$\alpha$'s of C6.47-P6.50-C7.37; and spheres of 5 $\AA$ centred on the geometric centres of the triangles formed by joining C-$\alpha$'s of: V3.54-R34.57-A4.42, and N2.45-T3.42-V4.45-W4.50. Similar positions were used for $\delta$OR and A$_{2A}$AR, determined by centring the waters probability density in the geometric centre of the selected C-$\alpha$'s.
+
+Waters dipole moment vector ($\mu$) was calculated using equation \ref{eq:polarorient}, where $H_i$ is the (x,y,z) coordinate of the $i$th hydrogen, and $O$ is the (x,y,z) coordinate of the oxygen. The polarisation orientation was calculated by converting the dot product of the dipole vector with the box axes into spherical coordinates, using equations \ref{eq:spherecoord1} and \ref{eq:spherecoord2}.
+
+\begin{equation}
+\label{eq:polarorient}
+\mu = 0.5(H_1 + H_2) - O
+\end{equation}
+
+\begin{equation}
+\label{eq:spherecoord1}
+\psi = arctan \frac{y}{x}
+\end{equation}
+\begin{equation}
+\label{eq:spherecoord2}
+\phi = arccos \frac{z}{\sqrt{x^2 + y^2 + z^2}}
+\end{equation}
+
+\textbf{Conformational state clustering algorithm.}
+
+A hanning window function was used to smooth the probability density function to remove noise and locate the state maxima for each rotamer conformation. Guess parameters for gaussian fitting were then obtained by locating the FWHM from each maxima and gaussian curve fitting was applied. Each discretised distribution was independently checked to ensure the fitting was accurate.  
+
+\newpage
+
+\bibliography{bib}
+
+
+\end{document}
+
+
